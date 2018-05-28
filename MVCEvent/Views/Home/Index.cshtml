@@ -1,0 +1,62 @@
+﻿@model MVCEvent.Models.User
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Success!</strong> Du är inloggad som <span class="badge badge-warning">EventAdmin</span>
+    </div>
+      
+
+    <section id="welcome" class="jumbotron" style="background: #f4ebd7">
+        <div class="container">
+            <h1><strong>Välkommen</strong></h1>
+            <p>Klicka på <strong>Deltagare, Händelser, Kategorier</strong> eller <strong>kopplingar</strong> för att sköta administration </p>
+        </div>
+    </section>
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+}
+else
+{
+    <div class="alert alert-info alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Information!</strong> Ange ditt Administratörs användarnamn och lösenord för att logga in.
+    </div>
+                    <div class="container">
+                        @using (Html.BeginForm())
+                        {
+                            <div class="form-group">
+                                <label for="Username"><strong>Username:</strong></label>
+                                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Password"><strong>Password:</strong></label>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                            <input class="btn btn-success" type="submit" value="Logga in" />
+
+                            @Html.ValidationSummary(true)
+                        }
+                    </div>
+<br /><br /><br />
+<br /><br /><br />
+<br /><br /><br />
+<br /><br /><br />
+
+
+
+}
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+

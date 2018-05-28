@@ -1,0 +1,42 @@
+﻿@model MVCEvent.Participants
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="registered">Registrerad</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.registered, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.registered, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="userId">Användare</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.userId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
+                <small class="text-muted">Ange ett identifikationsnummer för användaren som skall delta på händelsen</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="eventId">Händelse</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.eventId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.eventId, "", new { @class = "text-danger" })
+                <small class="text-muted">Ange ett identifikationsnummer för händelsen</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lägg till deltagare" class="btn btn-success" />
+                @Html.ActionLink("Avbryt", "Index")
+            </div>
+        </div>
+    </div>
+}

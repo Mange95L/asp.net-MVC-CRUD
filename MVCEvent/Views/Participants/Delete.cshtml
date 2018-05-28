@@ -1,0 +1,40 @@
+﻿@model MVCEvent.BasicParticipant
+
+<h3>Är du säker att du vill ta bort användaren från händelsen?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Registrerad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registered)
+        </dd>
+
+        <dt>
+            Användare
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            Händelse
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ta bort" class="btn btn-danger" />
+            @Html.ActionLink("Avbryt", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MVCEvent.BasicParticipant>
+
+<p>
+    @Html.ActionLink("Lägg till ny deltagare", "Create", new { }, new { @class = "btn btn-success" })
+</p>
+<input class="form-control" id="myInput" type="text" placeholder="Sök">
+<div id="myDIV" class="mt-3">
+    <table class="table table-sm table-hover">
+        <tbody id="myTable">
+            <tr>
+                <th>
+                    Registrerad
+                </th>
+                <th>
+                    Användare
+                </th>
+                <th>
+                    Händelse
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.registered)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.eventName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detaljer", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-primary" })                                                                    
+                    </td>
+                    <td>
+                        @Html.ActionLink("Ändra", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-info" })  
+                    </td>
+                    <td>
+                        @Html.ActionLink("Ta bort", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger" })
+                    </td>
+                </tr>
+            }
+</tbody>
+</table>
+    </div>
+    <script src="~/Scripts/Search.js"></script>

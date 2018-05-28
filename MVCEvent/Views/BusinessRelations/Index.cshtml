@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVCEvent.BasicConnection>
+
+    <p>
+        @Html.ActionLink("Lägg till ny koppling", "Create", new { }, new { @class = "btn btn-success"})
+    </p>
+<input class="form-control" id="myInput" type="text" placeholder="Sök">
+<div id="myDIV" class="mt-3">
+    <table class="table table-sm table-hover">
+        <tbody id="myTable">
+            <tr>
+                <th>
+                    Verksamhet
+                </th>
+                <th>
+                    Händelse
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.businessName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.eventName)
+                    </td>
+                    <td>                        
+                        @Html.ActionLink("Detaljer", "Details", new { id = item.id }, new { @class = "btn btn-primary btn-sm" })                        
+                    </td>
+                    <td>
+                        @Html.ActionLink("Ändra", "Edit", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Ta bort", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+</tbody>
+</table>
+    </div>
+
+
+    <script src="~/Scripts/Search.js"></script>

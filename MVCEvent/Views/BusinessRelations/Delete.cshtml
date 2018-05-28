@@ -1,0 +1,32 @@
+﻿@model MVCEvent.BasicConnection
+
+<h3>Är du säker att du vill at bort den här kopplingen?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Verksamhet
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.businessName)
+        </dd>
+
+        <dt>
+            Händelse
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ta bort" class="btn btn-danger" />
+            @Html.ActionLink("Avbryt", "Index")
+        </div>
+    }
+</div>
